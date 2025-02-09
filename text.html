@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draz - Online Shopping for Clothes</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        /* Hero section styles */
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+        .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Featured products section styles */
+        .featured-products {
+            padding: 4rem 0;
+            background-color: #f4f4f4;
+        }
+        .featured-products h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: calc(25% - 1.5rem);
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 1rem;
+        }
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+        }
+        .product-info p {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* About us section styles */
+        .about-us {
+            padding: 4rem 0;
+        }
+        .about-us h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .about-image {
+            flex: 1;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .about-text {
+            flex: 1;
+        }
+
+        /* Newsletter section styles */
+        .newsletter {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .newsletter h2 {
+            margin-bottom: 1rem;
+        }
+        .newsletter p {
+            margin-bottom: 2rem;
+        }
+        .newsletter form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .newsletter input[type="email"] {
+            padding: 0.8rem;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+        }
+        .newsletter button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .newsletter button:hover {
+            background-color: #555;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .social-links a {
+            color: #fff;
+            margin-left: 1rem;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .product-card {
+                width: calc(50% - 1rem);
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .newsletter form {
+                flex-direction: column;
+                align-items: center;
+            }
+            .newsletter input[type="email"] {
+                width: 100%;
+                max-width: 300px;
+            }
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Draz</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Discover Your Style with Draz</h1>
+                    <p>Shop the latest fashion trends from the comfort of your home.</p>
+                    <a href="#products" class="cta-button">Shop Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="featured-products">
+            <div class="container">
+                <h2>Featured Products</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1015&q=80" alt="Product 1">
+                        <div class="product-info">
+                            <h3>Stylish T-Shirt</h3>
+                            <p>$29.99</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Product 2">
+                        <div class="product-info">
+                            <h3>Elegant Dress</h3>
+                            <p>$79.99</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Product 3">
+                        <div class="product-info">
+                            <h3>Classic Jeans</h3>
+                            <p>$59.99</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src=data:image/jpeg;base64,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 alt="Product 4">
+                        <div class="product-info">
+                            <h3>Cozy Sweater</h3>
+                            <p>$49.99</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-us">
+            <div class="container">
+                <h2>About Draz</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="About Draz">
+                    </div>
+                    <div class="about-text">
+                        <p>Draz is your one-stop destination for trendy and affordable clothing. We believe that fashion should be accessible to everyone, which is why we offer a wide range of styles to suit every taste and budget.</p>
+                        <p>Our team of fashion experts carefully curates our collection to bring you the latest trends and timeless classics. With Draz, you can shop with confidence, knowing that you're getting high-quality clothing at unbeatable prices.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="newsletter">
+            <div class="container">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for the latest trends and exclusive offers.</p>
+                <form>
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
